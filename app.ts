@@ -2,6 +2,10 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import errorHandler from './middlewares/errorHandler';
+
+// import routes
+import userRoute from './routes/userRoute';
 
 const app = express();
 
@@ -17,5 +21,10 @@ app.get('/api', (_req, res) => {
     const message = 'Hello world! Welcome to the API. This API allows you to manage a to-do list with various endpoints to create, read, update, and delete tasks.';
     res.json({ message });
 });
+
+app.use('/api/auth', userRoute);
+
+// error handler
+app.use(errorHandler);
 
 export default app;
