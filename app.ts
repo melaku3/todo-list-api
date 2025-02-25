@@ -6,6 +6,7 @@ import errorHandler from './middlewares/errorHandler';
 
 // import routes
 import userRoute from './routes/userRoute';
+import todoRoute from './routes/todoRoute';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.get('/api', (_req, res) => {
 });
 
 app.use('/api/auth', userRoute);
+app.use('/api/todos', todoRoute);
 
 // error handler
 app.use(errorHandler);
